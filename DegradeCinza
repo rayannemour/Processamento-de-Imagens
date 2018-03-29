@@ -1,0 +1,46 @@
+public class EstudoCores {
+
+    /**
+     * @param args the command line arguments
+     * @throws java.io.IOException
+     */
+    public static void main(String[] args) throws IOException {
+        int width = 500;
+        int height = 200;
+        
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        
+        WritableRaster raster = image.getRaster();
+        
+        //Fazendo as cores
+        
+        int [] azul1 = new int[] {220,220,220};
+        int [] azul2 = new int[] {211,211,211};
+        int [] azul3 = new int[] {192,192,192};
+        int [] azul4 = new int[] {169,169,169};
+        int [] azul5 = new int[] {128,128,128};
+        
+        for (int h=0; h< height; h++) {
+            for (int w=0; w<width; w++){
+                if((w<=100)){
+                    raster.setPixel(w, h, azul1);
+                } else if ((w>100) && (w<100 + 100)) {
+
+                    raster.setPixel(w, h, azul2);
+                    } else if ((w>100) && (w< 100+200)){
+                        raster.setPixel(w,h,azul3);
+                    } else if ((w>100) && (w<100+300)){
+                        raster.setPixel(w, h, azul4);
+                    } else {
+                        raster.setPixel(w, h, azul5);
+                    }
+            }
+        }
+        
+        
+        
+       
+
+
+ImageIO.write(image,"PNG", new File("teste.png"));
+}
